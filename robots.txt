@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://yegormurunov.gq/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+Sitemap: https://yegormurunov.gq/sitemap.xml
