@@ -36,7 +36,6 @@ body {
   font-family: "Cousine";
   background: #fff;
   color: #000;
-  font-size: 16px;
 }
 body.lock {
   overflow: hidden;
@@ -126,7 +125,7 @@ header .inner-header {
   padding: 25px 0;
 }
 header .inner-header .header__nav {
-  font-size: 15px;
+  font-size: calc(14px + 1 * ((100vw - 320px) / 1216));
   font-family: "Cousine-Bold";
   font-weight: 700;
   text-transform: uppercase;
@@ -179,7 +178,7 @@ content .inner-content .section .section__title.h1 {
   position: relative;
   max-width: 100%;
   margin: 0;
-  font-size: 32px;
+  font-size: calc(24px + 8 * ((100vw - 320px) / 1216));
 }
 content .inner-content .section .section__title.h1::before {
   content: "";
@@ -192,7 +191,7 @@ content .inner-content .section .section__title {
   position: relative;
   max-width: 720px;
   margin: 15px 0 10px 0;
-  font-size: 24px;
+  font-size: calc(18px + 6 * ((100vw - 320px) / 1216));
   z-index: 2;
 }
 content .inner-content .section .section__title::before {
@@ -226,7 +225,7 @@ content .inner-content #section__home .container {
   z-index: 2;
 }
 content .inner-content #section__home .section__home__text {
-  font-size: 18px;
+  font-size: calc(16px + 2 * ((100vw - 320px) / 1216));
   max-width: 720px;
 }
 content .inner-content #section__home .section__arrowDown {
@@ -261,7 +260,7 @@ content .inner-content #section__home .section__arrowDown {
   }
 }
 content .inner-content #section__resume .section__text {
-  font-size: 16px;
+  font-size: calc(14px + 2 * ((100vw - 320px) / 1216));
 }
 content .inner-content #section__resume .section__text p {
   margin: 10px 0;
@@ -310,7 +309,7 @@ content .inner-content #section__portfolio .works .works__item a .works__area .w
 content .inner-content #section__portfolio .works .works__item a .works__title {
   position: relative;
   margin: 0 0 5px 0;
-  font-size: 19px;
+  font-size: calc(16px + 2 * ((100vw - 320px) / 1216));
   color: #000;
   text-transform: uppercase;
   order: 2;
@@ -323,7 +322,7 @@ content .inner-content #section__portfolio .works .works__item a:hover .works__t
   color: #654321;
 }
 content .inner-content #section__portfolio .works .works__item .works__date {
-  font-size: 16px;
+  font-size: calc(14px + 2 * ((100vw - 320px) / 1216));
   color: #000;
   order: 3;
 }
@@ -380,16 +379,17 @@ body.webp content .inner-content #section__home {
 }
 .popup .popup__body .popup__content .popup__title {
   margin: 0 0 1em 0;
+  font-size: calc(20px + 4 * ((100vw - 320px) / 1216));
 }
 .popup .popup__body .popup__content .popup__text {
-  font-size: 16px;
+  font-size: calc(14px + 2 * ((100vw - 320px) / 1216));
   color: #000;
 }
 .popup .popup__body .popup__content .popup__description {
-  font-size: 14px;
+  font-size: calc(12px + 2 * ((100vw - 320px) / 1216));
 }
 .popup .popup__body .popup__content .popup__description .popup__text {
-  font-size: 16px;
+  font-size: calc(14px + 2 * ((100vw - 320px) / 1216));
 }
 .popup .popup__body .popup__content .popup__description p {
   margin-bottom: 10px;
@@ -589,7 +589,7 @@ footer .inner-footer {
 }
 footer .inner-footer .back__to-top > a {
   position: relative;
-  font-size: 18px;
+  font-size: calc(16px + 2 * ((100vw - 320px) / 1216));
   color: #fff;
   text-decoration: none;
 }
