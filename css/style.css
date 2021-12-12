@@ -415,7 +415,7 @@ body.webp content .inner-content #section__home {
   text-align: center;
 }
 .popup .popup__body .popup__content .popup__images img {
-  max-width: 100%;
+  max-width: 760px;
   margin-bottom: 10px;
 }
 .popup .popup__body .popup__content .popup__btns {
