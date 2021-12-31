@@ -271,6 +271,33 @@ content .inner-content #section__resume .section__text p:first-child {
 content .inner-content #section__resume .section__text p:last-child {
   margin: 10px 0 0 0;
 }
+content .inner-content #section__resume .section__text ul.resume__ul {
+  margin: 0;
+}
+content .inner-content #section__resume .section__text ul.resume__ul li.resume__li {
+  list-style: outside;
+  margin-left: 20px;
+}
+content .inner-content #section__resume .section__text .resume__contacts {
+  text-decoration: none;
+  color: #000;
+  font-family: "Cousine-Bold";
+  position: relative;
+}
+content .inner-content #section__resume .section__text .resume__contacts::before {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  transition: width 0.2s ease;
+}
+content .inner-content #section__resume .section__text .resume__contacts:hover:before {
+  left: 0;
+  width: 100%;
+}
 content .inner-content #section__portfolio .works {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
