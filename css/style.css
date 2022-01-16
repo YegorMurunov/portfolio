@@ -112,12 +112,14 @@ header {
   left: 0;
   width: 100%;
   background: none;
-  z-index: 3;
-  transition: background 0.5s ease;
+  z-index: 4;
+  transition-duration: 0.5s;
+  transition-property: background backdrop-filter;
 }
 header.header__fixed {
   background: rgba(0, 0, 0, 0.9);
-  transition: background 0.5s ease;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
 }
 header .inner-header {
   display: flex;
@@ -169,6 +171,9 @@ header .inner-header .header__nav ul li:last-child {
   margin: 0;
 }
 
+content {
+  flex: 1 1 auto;
+}
 content .inner-content .section {
   width: 100%;
   padding: 10px 20px;
@@ -232,7 +237,7 @@ content .inner-content #section__home .section__arrowDown {
   position: absolute;
   bottom: 10px;
   left: 50%;
-  transform: translate(50%, 0);
+  transform: translate(-50%, 0);
   font-size: 24px;
   -webkit-animation: arrowDown 2s ease-in-out infinite;
           animation: arrowDown 2s ease-in-out infinite;
@@ -278,6 +283,146 @@ content .inner-content #section__resume .section__text ul.resume__ul li.resume__
   list-style: outside;
   margin-left: 20px;
 }
+content .inner-content #section__resume .section__text .resume__title {
+  font-family: "Cousine-Bold";
+  font-weight: 400;
+  margin-bottom: 5px;
+  font-size: calc(18px + 2 * ((100vw - 320px) / 1216));
+}
+content .inner-content #section__resume .section__text .resume__skills {
+  margin-bottom: 50px;
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__title {
+  margin-top: 10px;
+  font-size: calc(18px + 2 * ((100vw - 320px) / 1216));
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  position: relative;
+  flex-wrap: wrap;
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__content::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item {
+  min-height: 150px;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::before {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #654321;
+  z-index: 2;
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::after {
+  content: "";
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 2px;
+  height: 25%;
+  border-radius: 50%;
+  background-color: #000;
+  z-index: 1;
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item:hover .skills__item__info {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item .skills__item__info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 200px;
+  min-height: 100px;
+  background: #654321;
+  color: #fff;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  position: absolute;
+  top: -75%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item .skills__item__info::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border: 10px solid transparent;
+  border-top: 10px solid #654321;
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item .skills__item__info span {
+  font-family: "Cousine-Bold";
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item img {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 1055px) {
+  content .inner-content #section__resume .section__text .resume__skills .skills__content::before {
+    height: 0;
+    width: 0;
+  }
+  content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::before, content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::after {
+    width: 0;
+    height: 0;
+  }
+}
+@media (max-width: 400px) {
+  content .inner-content #section__resume .section__text .resume__skills .skills__content {
+    flex-direction: column;
+    justify-content: center;
+  }
+  content .inner-content #section__resume .section__text .resume__skills .skills__content::before {
+    width: 2px;
+    height: 90%;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::before {
+    width: 10px;
+    height: 10px;
+    bottom: 5px;
+  }
+  content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::after {
+    width: 2px;
+    height: 25px;
+  }
+}
 content .inner-content #section__resume .section__text .resume__contacts {
   text-decoration: none;
   color: #000;
@@ -297,6 +442,13 @@ content .inner-content #section__resume .section__text .resume__contacts::before
 content .inner-content #section__resume .section__text .resume__contacts:hover:before {
   left: 0;
   width: 100%;
+}
+@media (max-width: 400px) {
+  content .inner-content #section__resume .section__text .resume__contacts {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 content .inner-content #section__portfolio .works {
   display: grid;
@@ -365,7 +517,7 @@ body.webp content .inner-content #section__home {
   background-color: rgba(0, 0, 0, 0.8);
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 4;
   opacity: 0;
   visibility: hidden;
   overflow-y: auto;
@@ -388,6 +540,7 @@ body.webp content .inner-content #section__home {
   padding: 20px;
   transition: all 0.8s ease;
   transform: translate(0px, -100%);
+  pointer-events: none;
 }
 .popup .popup__body .popup__content .popup__close {
   position: absolute;
@@ -601,6 +754,7 @@ body.webp content .inner-content #section__home {
 .popup.open .popup__content {
   opacity: 1;
   transform: translateY(0);
+  pointer-events: all;
 }
 
 footer {
