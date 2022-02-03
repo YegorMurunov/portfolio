@@ -184,9 +184,15 @@ var header = document.querySelector('header');
 window.addEventListener('scroll', function () {
   // фиксирование шапки
   if (pageYOffset > header.offsetHeight) {
-    header.classList.add('header__fixed');
-  } else {
-    header.classList.remove('header__fixed');
+    if (!header.classList.contains('header__fixed')) {
+      header.classList.add('header__fixed');
+    }
+  }
+
+  if (pageYOffset === 0) {
+    if (header.classList.contains('header__fixed')) {
+      header.classList.remove('header__fixed');
+    }
   } // активный пункт меню
 
 

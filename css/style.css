@@ -36,6 +36,7 @@ body {
   font-family: "Cousine";
   background: #fff;
   color: #000;
+  font-size: 16px;
 }
 body.lock {
   overflow: hidden;
@@ -62,7 +63,7 @@ h1, h2, h3, h4, h5, .bold-text {
   background-color: #654321;
   opacity: 1;
   visibility: visible;
-  z-index: 4;
+  z-index: 5;
   transition: all 1s ease;
 }
 #preloader.done {
@@ -107,7 +108,7 @@ h1, h2, h3, h4, h5, .bold-text {
 }
 
 header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -117,14 +118,35 @@ header {
   transition-property: background backdrop-filter;
 }
 header.header__fixed {
+  position: fixed;
   background: rgba(0, 0, 0, 0.9);
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
+  -webkit-animation: headerFixed 0.5s ease;
+          animation: headerFixed 0.5s ease;
+}
+@-webkit-keyframes headerFixed {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes headerFixed {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0;
+  }
 }
 header .inner-header {
   display: flex;
   justify-content: center;
-  padding: 25px 0;
+  align-items: center;
+  padding: 20px 0;
+  position: relative;
 }
 header .inner-header .header__nav {
   font-size: calc(14px + 1 * ((100vw - 320px) / 1216));
@@ -357,6 +379,8 @@ content .inner-content #section__resume .section__text .resume__skills .skills__
   min-width: 200px;
   min-height: 100px;
   background: #654321;
+  font-family: "Cousine";
+  font-size: calc(15px + 1 * ((100vw - 320px) / 1216));
   color: #fff;
   padding: 15px;
   border-radius: 15px;
@@ -382,6 +406,8 @@ content .inner-content #section__resume .section__text .resume__skills .skills__
 }
 content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item .skills__item__info span {
   font-family: "Cousine-Bold";
+  font-weight: 700;
+  font-size: calc(16px + 2 * ((100vw - 320px) / 1216));
   text-transform: uppercase;
   margin-bottom: 10px;
 }
@@ -401,7 +427,7 @@ content .inner-content #section__resume .section__text .resume__skills .skills__
     height: 0;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 455px) {
   content .inner-content #section__resume .section__text .resume__skills .skills__content {
     flex-direction: column;
     justify-content: center;
