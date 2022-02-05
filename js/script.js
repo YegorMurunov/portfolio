@@ -198,13 +198,13 @@ window.addEventListener('scroll', function () {
 
   var TopOffset = window.scrollY;
   document.querySelectorAll('.section').forEach(function (e, i) {
-    if (e.offsetTop - document.querySelector('.header__nav').clientHeight <= TopOffset + header.offsetHeight) {
-      document.querySelectorAll('.header__nav__link').forEach(function (e) {
+    if (e.offsetTop - document.querySelector('.header-nav').clientHeight <= TopOffset + header.offsetHeight) {
+      document.querySelectorAll('.header-nav__link').forEach(function (e) {
         if (e.classList.contains('active')) {
           e.classList.remove('active');
         }
       });
-      document.querySelectorAll('.header__nav li')[i].querySelector('a').classList.add('active');
+      document.querySelectorAll('.header-nav li')[i].querySelector('a').classList.add('active');
     }
   });
 }); // навигация

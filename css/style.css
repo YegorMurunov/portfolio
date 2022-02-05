@@ -24,6 +24,7 @@ li[class], ol[class], ul[class] {
   src: local("☺"), url("../fonts/Cousine.woff") format("woff"), url("../fonts/Cousine.ttf") format("truetype"), url("../fonts/Cousine.svg") format("svg");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Cousine-Bold";
@@ -31,7 +32,17 @@ li[class], ol[class], ul[class] {
   src: local("☺"), url("../fonts/Cousine-Bold.woff") format("woff"), url("../fonts/Cousine-Bold.ttf") format("truetype"), url("../fonts/Cousine-Bold.svg") format("svg");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
+::-webkit-scrollbar {
+  background: #fff;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #654321;
+}
+
 body {
   font-family: "Cousine";
   background: #fff;
@@ -107,7 +118,7 @@ h1, h2, h3, h4, h5, .bold-text {
   margin: 0 auto;
 }
 
-header {
+header.header {
   position: absolute;
   top: 0;
   left: 0;
@@ -117,7 +128,7 @@ header {
   transition-duration: 0.5s;
   transition-property: background backdrop-filter;
 }
-header.header__fixed {
+header.header.header__fixed {
   position: fixed;
   background: rgba(0, 0, 0, 0.9);
   -webkit-backdrop-filter: blur(2px);
@@ -141,34 +152,34 @@ header.header__fixed {
     top: 0;
   }
 }
-header .inner-header {
+header.header .inner__header {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 0;
   position: relative;
 }
-header .inner-header .header__nav {
+header.header .inner__header .header__nav.header-nav {
   font-size: calc(14px + 1 * ((100vw - 320px) / 1216));
   font-family: "Cousine-Bold";
   font-weight: 700;
   text-transform: uppercase;
 }
-header .inner-header .header__nav ul {
+header.header .inner__header .header__nav.header-nav ul {
   display: flex;
 }
-header .inner-header .header__nav ul li {
+header.header .inner__header .header__nav.header-nav ul li {
   list-style: none;
   margin-right: 20px;
 }
-header .inner-header .header__nav ul li .header__nav__link {
+header.header .inner__header .header__nav.header-nav ul li .header-nav__link {
   position: relative;
   color: #fff;
   text-decoration: none;
   opacity: 0.8;
   transition: all 0.1s ease;
 }
-header .inner-header .header__nav ul li .header__nav__link::before {
+header.header .inner__header .header__nav.header-nav ul li .header-nav__link::before {
   content: "";
   position: absolute;
   width: 0;
@@ -178,42 +189,42 @@ header .inner-header .header__nav ul li .header__nav__link::before {
   background-color: #654321;
   transition: width 0.2s ease;
 }
-header .inner-header .header__nav ul li .header__nav__link:hover {
+header.header .inner__header .header__nav.header-nav ul li .header-nav__link:hover {
   opacity: 1;
   transition: all 0.2s ease;
 }
-header .inner-header .header__nav ul li .header__nav__link.active {
+header.header .inner__header .header__nav.header-nav ul li .header-nav__link.active {
   opacity: 1;
 }
-header .inner-header .header__nav ul li .header__nav__link.active::before {
+header.header .inner__header .header__nav.header-nav ul li .header-nav__link.active::before {
   width: 100%;
   left: 0;
 }
-header .inner-header .header__nav ul li:last-child {
+header.header .inner__header .header__nav.header-nav ul li:last-child {
   margin: 0;
 }
 
 content {
   flex: 1 1 auto;
 }
-content .inner-content .section {
+content .inner__content .section {
   width: 100%;
   padding: 10px 20px;
 }
-content .inner-content .section .section__title.h1 {
+content .inner__content .section .section__title.h1 {
   display: block;
   position: relative;
   max-width: 100%;
   margin: 0;
   font-size: calc(24px + 8 * ((100vw - 320px) / 1216));
 }
-content .inner-content .section .section__title.h1::before {
+content .inner__content .section .section__title.h1::before {
   content: "";
   width: 0;
   height: 0;
   background-color: none;
 }
-content .inner-content .section .section__title {
+content .inner__content .section .section__title {
   display: inline-block;
   position: relative;
   max-width: 720px;
@@ -221,7 +232,7 @@ content .inner-content .section .section__title {
   font-size: calc(18px + 6 * ((100vw - 320px) / 1216));
   z-index: 2;
 }
-content .inner-content .section .section__title::before {
+content .inner__content .section .section__title::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -231,7 +242,7 @@ content .inner-content .section .section__title::before {
   background-color: #654321;
   z-index: 1;
 }
-content .inner-content #section__home {
+content .inner__content .section-home {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -240,7 +251,7 @@ content .inner-content #section__home {
   background: #654321 url("../img/interface/intro.jpg") center/cover no-repeat;
   color: #fff;
 }
-content .inner-content #section__home::before {
+content .inner__content .section-home::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -248,21 +259,26 @@ content .inner-content #section__home::before {
   background: rgba(0, 0, 0, 0.7);
   z-index: 1;
 }
-content .inner-content #section__home .container {
+content .inner__content .section-home .container {
   z-index: 2;
 }
-content .inner-content #section__home .section__home__text {
+content .inner__content .section-home .section-home__text {
   font-size: calc(16px + 2 * ((100vw - 320px) / 1216));
   max-width: 720px;
 }
-content .inner-content #section__home .section__arrowDown {
+content .inner__content .section-home .section-home__arrowDown {
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translate(-50%, 0);
-  font-size: 24px;
+  width: 25px;
+  height: 25px;
   -webkit-animation: arrowDown 2s ease-in-out infinite;
           animation: arrowDown 2s ease-in-out infinite;
+}
+content .inner__content .section-home .section-home__arrowDown img {
+  width: 25px;
+  height: 25px;
 }
 @-webkit-keyframes arrowDown {
   0% {
@@ -286,39 +302,43 @@ content .inner-content #section__home .section__arrowDown {
     bottom: 20px;
   }
 }
-content .inner-content #section__resume .section__text {
+content .inner__content .section-resume .section__text {
   font-size: calc(14px + 2 * ((100vw - 320px) / 1216));
 }
-content .inner-content #section__resume .section__text p {
+content .inner__content .section-resume .section__text p {
   margin: 10px 0;
 }
-content .inner-content #section__resume .section__text p:first-child {
+content .inner__content .section-resume .section__text p:first-child {
   margin: 0 0 10px 0;
 }
-content .inner-content #section__resume .section__text p:last-child {
+content .inner__content .section-resume .section__text p:last-child {
   margin: 10px 0 0 0;
 }
-content .inner-content #section__resume .section__text ul.resume__ul {
+content .inner__content .section-resume .section__text ul.section-resume__ul {
   margin: 0;
 }
-content .inner-content #section__resume .section__text ul.resume__ul li.resume__li {
+content .inner__content .section-resume .section__text ul.section-resume__ul li.section-resume__li {
   list-style: outside;
   margin-left: 20px;
 }
-content .inner-content #section__resume .section__text .resume__title {
+content .inner__content .section-resume .section__text ul.section-resume__ul li.section-resume__li:first-child {
+  margin: 0;
+  list-style: none;
+}
+content .inner__content .section-resume .section__text ul.section-resume__ul li.section-resume__li h3 {
   font-family: "Cousine-Bold";
   font-weight: 400;
   margin-bottom: 5px;
   font-size: calc(18px + 2 * ((100vw - 320px) / 1216));
 }
-content .inner-content #section__resume .section__text .resume__skills {
+content .inner__content .section-resume .section__text .section-resume__skills.skills {
   margin-bottom: 50px;
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__title {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__title {
   margin-top: 10px;
   font-size: calc(18px + 2 * ((100vw - 320px) / 1216));
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__content {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -326,7 +346,7 @@ content .inner-content #section__resume .section__text .resume__skills .skills__
   position: relative;
   flex-wrap: wrap;
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__content::before {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content::before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -335,14 +355,14 @@ content .inner-content #section__resume .section__text .resume__skills .skills__
   height: 2px;
   background-color: #000;
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item {
   min-height: 150px;
   min-width: 200px;
   display: flex;
   justify-content: center;
   position: relative;
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::before {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item::before {
   content: "";
   position: absolute;
   bottom: -3px;
@@ -354,7 +374,7 @@ content .inner-content #section__resume .section__text .resume__skills .skills__
   background-color: #654321;
   z-index: 2;
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::after {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item::after {
   content: "";
   position: absolute;
   top: 75%;
@@ -366,12 +386,12 @@ content .inner-content #section__resume .section__text .resume__skills .skills__
   background-color: #000;
   z-index: 1;
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item:hover .skills__item__info {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item:hover .skills-item__info {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item .skills__item__info {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item .skills-item__info {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -395,7 +415,7 @@ content .inner-content #section__resume .section__text .resume__skills .skills__
   pointer-events: none;
   transition: all 0.5s ease;
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item .skills__item__info::before {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item .skills-item__info::before {
   content: "";
   position: absolute;
   top: 100%;
@@ -404,58 +424,58 @@ content .inner-content #section__resume .section__text .resume__skills .skills__
   border: 10px solid transparent;
   border-top: 10px solid #654321;
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item .skills__item__info span {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item .skills-item__info span {
   font-family: "Cousine-Bold";
   font-weight: 700;
   font-size: calc(16px + 2 * ((100vw - 320px) / 1216));
   text-transform: uppercase;
   margin-bottom: 10px;
 }
-content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item img {
+content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item img {
   width: 120px;
   height: 120px;
   position: relative;
   z-index: 2;
 }
 @media (max-width: 1055px) {
-  content .inner-content #section__resume .section__text .resume__skills .skills__content::before {
+  content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content::before {
     height: 0;
     width: 0;
   }
-  content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::before, content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::after {
+  content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item::before, content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item::after {
     width: 0;
     height: 0;
   }
 }
 @media (max-width: 455px) {
-  content .inner-content #section__resume .section__text .resume__skills .skills__content {
+  content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content {
     flex-direction: column;
     justify-content: center;
   }
-  content .inner-content #section__resume .section__text .resume__skills .skills__content::before {
+  content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content::before {
     width: 2px;
     height: 90%;
     top: 10px;
     left: 50%;
     transform: translate(-50%, 0);
   }
-  content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::before {
+  content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item::before {
     width: 10px;
     height: 10px;
     bottom: 5px;
   }
-  content .inner-content #section__resume .section__text .resume__skills .skills__content .skills__item::after {
+  content .inner__content .section-resume .section__text .section-resume__skills.skills .skills__content .skills__item.skills-item::after {
     width: 2px;
     height: 25px;
   }
 }
-content .inner-content #section__resume .section__text .resume__contacts {
+content .inner__content .section-resume .section__text .section-resume__contacts {
   text-decoration: none;
   color: #000;
   font-family: "Cousine-Bold";
   position: relative;
 }
-content .inner-content #section__resume .section__text .resume__contacts::before {
+content .inner__content .section-resume .section__text .section-resume__contacts::before {
   content: "";
   width: 0;
   height: 2px;
@@ -465,24 +485,24 @@ content .inner-content #section__resume .section__text .resume__contacts::before
   right: 0;
   transition: width 0.2s ease;
 }
-content .inner-content #section__resume .section__text .resume__contacts:hover:before {
+content .inner__content .section-resume .section__text .section-resume__contacts:hover:before {
   left: 0;
   width: 100%;
 }
 @media (max-width: 400px) {
-  content .inner-content #section__resume .section__text .resume__contacts {
+  content .inner__content .section-resume .section__text .section-resume__contacts {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
   }
 }
-content .inner-content #section__portfolio .works {
+content .inner__content .section-portfolio .works {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
   grid-gap: 10px;
   justify-content: center;
 }
-content .inner-content #section__portfolio .works .works__item {
+content .inner__content .section-portfolio .works .works__item.works-item {
   position: relative;
   padding: 15px;
   height: 100%;
@@ -490,10 +510,10 @@ content .inner-content #section__portfolio .works .works__item {
   border-radius: 10px;
   background-color: none;
 }
-content .inner-content #section__portfolio .works .works__item a {
+content .inner__content .section-portfolio .works .works__item.works-item a {
   text-decoration: none;
 }
-content .inner-content #section__portfolio .works .works__item a .works__area {
+content .inner__content .section-portfolio .works .works__item.works-item a .works-item__area {
   position: relative;
   min-width: 100%;
   min-height: 300px;
@@ -502,7 +522,7 @@ content .inner-content #section__portfolio .works .works__item a .works__area {
   border-radius: 10px;
   order: 1;
 }
-content .inner-content #section__portfolio .works .works__item a .works__area .works__img {
+content .inner__content .section-portfolio .works .works__item.works-item a .works-item__area .works-item__img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -511,7 +531,7 @@ content .inner-content #section__portfolio .works .works__item a .works__area .w
   height: 100%;
   transition: all 0.5s ease;
 }
-content .inner-content #section__portfolio .works .works__item a .works__title {
+content .inner__content .section-portfolio .works .works__item.works-item a .works-item__title {
   position: relative;
   margin: 0 0 5px 0;
   font-size: calc(16px + 2 * ((100vw - 320px) / 1216));
@@ -519,20 +539,20 @@ content .inner-content #section__portfolio .works .works__item a .works__title {
   text-transform: uppercase;
   order: 2;
 }
-content .inner-content #section__portfolio .works .works__item a:hover .works__area .works__img {
+content .inner__content .section-portfolio .works .works__item.works-item a:hover .works-item__area .works-item__img {
   width: 125%;
   height: 125%;
 }
-content .inner-content #section__portfolio .works .works__item a:hover .works__title {
+content .inner__content .section-portfolio .works .works__item.works-item a:hover .works-item__title {
   color: #654321;
 }
-content .inner-content #section__portfolio .works .works__item .works__date {
+content .inner__content .section-portfolio .works .works__item.works-item .works-item__date {
   font-size: calc(14px + 2 * ((100vw - 320px) / 1216));
   color: #000;
   order: 3;
 }
 
-body.webp content .inner-content #section__home {
+body.webp content .inner__content #section__home {
   background: #654321 url("../img/interface/intro.webp") center/cover no-repeat;
 }
 
@@ -574,14 +594,19 @@ body.webp content .inner-content #section__home {
   right: 10px;
   color: #000;
   text-decoration: none;
+  width: 25px;
+  height: 25px;
 }
-.popup .popup__body .popup__content .popup__close a i {
-  font-size: 30px;
-  color: #000;
+.popup .popup__body .popup__content .popup__close a svg {
+  width: 25px;
+  height: 25px;
 }
-.popup .popup__body .popup__content .popup__close a i:hover {
-  color: #f00;
-  transition: color 0.1s ease;
+.popup .popup__body .popup__content .popup__close a svg circle {
+  fill: #000;
+  transition: fill 0.2s ease;
+}
+.popup .popup__body .popup__content .popup__close a:hover svg circle {
+  fill: #f00;
 }
 .popup .popup__body .popup__content .popup__title {
   margin: 0 0 1em 0;
@@ -623,6 +648,13 @@ body.webp content .inner-content #section__home {
 .popup .popup__body .popup__content .popup__images img {
   max-width: 100%;
   margin-bottom: 10px;
+  max-width: 760px;
+  height: auto;
+}
+@media (max-width: 820px) {
+  .popup .popup__body .popup__content .popup__images img {
+    width: 100%;
+  }
 }
 .popup .popup__body .popup__content .popup__btns {
   margin-top: 10px;
@@ -644,7 +676,7 @@ body.webp content .inner-content #section__home {
 .popup .popup__body .popup__content .popup__btns .site-btn:hover {
   background-color: #654321;
 }
-.popup .popup__body .popup__content .popup__soc {
+.popup .popup__body .popup__content .popup__soc.popup-soc {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -653,11 +685,14 @@ body.webp content .inner-content #section__home {
   width: 100%;
   margin: 20px 0 0 0;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link {
   position: relative;
   margin: 0 5px 0 0;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link::before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link:last-child {
+  margin: 0;
+}
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -669,49 +704,49 @@ body.webp content .inner-content #section__home {
   background-color: none;
   transition: background-color 0.1s ease;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.facebook::before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.facebook::before {
   background-color: #3b5998;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.facebook:hover:before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.facebook:hover:before {
   background-color: #fff;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.instagram::before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.instagram::before {
   background-color: #E1306C;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.instagram:hover:before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.instagram:hover:before {
   background-color: #fff;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.telegram::before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.telegram::before {
   background-color: #0088cc;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.telegram:hover:before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.telegram:hover:before {
   background-color: #fff;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.twitter::before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.twitter::before {
   background-color: #1DA1F2;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.twitter:hover:before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.twitter:hover:before {
   background-color: #fff;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.viber::before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.viber::before {
   background-color: #665CAC;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.viber:hover:before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.viber:hover:before {
   background-color: #fff;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.whatsapp::before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.whatsapp::before {
   background-color: #25D366;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.whatsapp:hover:before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.whatsapp:hover:before {
   background-color: #fff;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.youtube::before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.youtube::before {
   background-color: #F00;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link.youtube:hover:before {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link.youtube:hover:before {
   background-color: #fff;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon {
   position: relative;
   padding: 0;
   margin: 0;
@@ -719,52 +754,49 @@ body.webp content .inner-content #section__home {
   height: 56px;
   z-index: 2;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon path {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon path {
   position: absolute;
   fill: #fff;
   transition: fill 0.2s ease;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.facebook:hover path {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.facebook:hover path {
   fill: #3b5998;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.youtube > circle {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.youtube > circle {
   fill: #fff;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.instagram circle {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.instagram circle {
   fill: #fff;
   transition: fill 0.2s ease;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.instagram:hover circle {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.instagram:hover circle {
   fill: #E1306C;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.instagram:hover path {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.instagram:hover path {
   fill: #E1306C;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.telegram:hover path {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.telegram:hover path {
   fill: #0088cc;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.twitter:hover path {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.twitter:hover path {
   fill: #1DA1F2;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.viber:hover path {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.viber:hover path {
   fill: #665CAC;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.whatsapp:hover path {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.whatsapp:hover path {
   fill: #25D366;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.youtube > g polygon {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.youtube > g polygon {
   fill: #fff;
   transition: fill 0.2s ease;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.youtube:hover > g > path {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.youtube:hover > g > path {
   fill: #F00;
   transition: fill 0.2s ease;
 }
-.popup .popup__body .popup__content .popup__soc .popup__soc__link .popup__soc__icon.youtube:hover > g polygon {
+.popup .popup__body .popup__content .popup__soc.popup-soc .popup-soc__link .popup-soc__icon.youtube:hover > g polygon {
   fill: #F00;
-}
-.popup .popup__body .popup__content .popup__soc .soc__link:last-child {
-  margin: 0;
 }
 .popup .popup__body .popup__content_image {
   padding: 0;
@@ -783,10 +815,10 @@ body.webp content .inner-content #section__home {
   pointer-events: all;
 }
 
-footer {
+footer.footer {
   background-color: #654321;
 }
-footer .inner-footer {
+footer.footer .inner__footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -794,13 +826,13 @@ footer .inner-footer {
   min-height: 100%;
   padding: 15px 0;
 }
-footer .inner-footer .back__to-top > a {
+footer.footer .inner__footer .back__to-top > a {
   position: relative;
   font-size: calc(16px + 2 * ((100vw - 320px) / 1216));
   color: #fff;
   text-decoration: none;
 }
-footer .inner-footer .back__to-top > a::before {
+footer.footer .inner__footer .back__to-top > a::before {
   content: "";
   position: absolute;
   top: 100%;
@@ -810,40 +842,42 @@ footer .inner-footer .back__to-top > a::before {
   background-color: #fff;
   transition: all 0.2s ease;
 }
-footer .inner-footer .back__to-top > a:hover:before {
+footer.footer .inner__footer .back__to-top > a:hover:before {
   width: 100%;
   left: 0;
 }
-footer .inner-footer #copyright {
+footer.footer .inner__footer #copyright {
   margin: 25px 0 0 0;
   font-size: 14px;
   color: #fff;
 }
-footer .inner-footer .footer__nav {
+footer.footer .inner__footer .footer__nav.footer-nav {
   margin: 25px 0 0 0;
 }
-footer .inner-footer .footer__nav ul {
+footer.footer .inner__footer .footer__nav.footer-nav ul {
   display: flex;
   flex-direction: row;
 }
-footer .inner-footer .footer__nav ul li {
+footer.footer .inner__footer .footer__nav.footer-nav ul li {
   list-style: none;
   margin-right: 20px;
 }
-footer .inner-footer .footer__nav ul li .footer__nav__link {
+footer.footer .inner__footer .footer__nav.footer-nav ul li .footer-nav__link {
   font-size: 14px;
-  color: grey;
+  color: #fff;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: -webkit-text-decoration 0.2s ease;
+  transition: text-decoration 0.2s ease;
+  transition: text-decoration 0.2s ease, -webkit-text-decoration 0.2s ease;
 }
-footer .inner-footer .footer__nav ul li .footer__nav__link:hover {
-  color: #fff;
+footer.footer .inner__footer .footer__nav.footer-nav ul li .footer-nav__link:hover {
+  text-decoration: underline;
 }
-footer .inner-footer .footer__nav ul li:last-child {
+footer.footer .inner__footer .footer__nav.footer-nav ul li:last-child {
   margin-right: 0;
 }
-footer .inner-footer .footer__soc {
+footer.footer .inner__footer .footer__soc.footer-soc {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -852,11 +886,14 @@ footer .inner-footer .footer__soc {
   width: 100%;
   margin: 20px 0 0 0;
 }
-footer .inner-footer .footer__soc .footer__soc__link {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link {
   position: relative;
   margin: 0 5px 0 0;
 }
-footer .inner-footer .footer__soc .footer__soc__link::before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link:last-child {
+  margin: 0;
+}
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -868,49 +905,49 @@ footer .inner-footer .footer__soc .footer__soc__link::before {
   background-color: none;
   transition: background-color 0.1s ease;
 }
-footer .inner-footer .footer__soc .footer__soc__link.facebook::before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.facebook::before {
   background-color: #3b5998;
 }
-footer .inner-footer .footer__soc .footer__soc__link.facebook:hover:before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.facebook:hover:before {
   background-color: #fff;
 }
-footer .inner-footer .footer__soc .footer__soc__link.instagram::before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.instagram::before {
   background-color: #E1306C;
 }
-footer .inner-footer .footer__soc .footer__soc__link.instagram:hover:before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.instagram:hover:before {
   background-color: #fff;
 }
-footer .inner-footer .footer__soc .footer__soc__link.telegram::before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.telegram::before {
   background-color: #0088cc;
 }
-footer .inner-footer .footer__soc .footer__soc__link.telegram:hover:before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.telegram:hover:before {
   background-color: #fff;
 }
-footer .inner-footer .footer__soc .footer__soc__link.twitter::before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.twitter::before {
   background-color: #1DA1F2;
 }
-footer .inner-footer .footer__soc .footer__soc__link.twitter:hover:before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.twitter:hover:before {
   background-color: #fff;
 }
-footer .inner-footer .footer__soc .footer__soc__link.viber::before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.viber::before {
   background-color: #665CAC;
 }
-footer .inner-footer .footer__soc .footer__soc__link.viber:hover:before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.viber:hover:before {
   background-color: #fff;
 }
-footer .inner-footer .footer__soc .footer__soc__link.whatsapp::before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.whatsapp::before {
   background-color: #25D366;
 }
-footer .inner-footer .footer__soc .footer__soc__link.whatsapp:hover:before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.whatsapp:hover:before {
   background-color: #fff;
 }
-footer .inner-footer .footer__soc .footer__soc__link.youtube::before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.youtube::before {
   background-color: #F00;
 }
-footer .inner-footer .footer__soc .footer__soc__link.youtube:hover:before {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link.youtube:hover:before {
   background-color: #fff;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon {
   position: relative;
   padding: 0;
   margin: 0;
@@ -918,52 +955,49 @@ footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon {
   height: 56px;
   z-index: 2;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon path {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon path {
   position: absolute;
   fill: #fff;
   transition: fill 0.2s ease;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.facebook:hover path {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.facebook:hover path {
   fill: #3b5998;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.youtube > circle {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.youtube > circle {
   fill: #fff;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.instagram circle {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.instagram circle {
   fill: #fff;
   transition: fill 0.2s ease;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.instagram:hover circle {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.instagram:hover circle {
   fill: #E1306C;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.instagram:hover path {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.instagram:hover path {
   fill: #E1306C;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.telegram:hover path {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.telegram:hover path {
   fill: #0088cc;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.twitter:hover path {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.twitter:hover path {
   fill: #1DA1F2;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.viber:hover path {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.viber:hover path {
   fill: #665CAC;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.whatsapp:hover path {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.whatsapp:hover path {
   fill: #25D366;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.youtube > g polygon {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.youtube > g polygon {
   fill: #fff;
   transition: fill 0.2s ease;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.youtube:hover > g > path {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.youtube:hover > g > path {
   fill: #F00;
   transition: fill 0.2s ease;
 }
-footer .inner-footer .footer__soc .footer__soc__link .footer__soc__icon.youtube:hover > g polygon {
+footer.footer .inner__footer .footer__soc.footer-soc .footer-soc__link .footer-soc__icon.youtube:hover > g polygon {
   fill: #F00;
-}
-footer .inner-footer .footer__soc .soc__link:last-child {
-  margin: 0;
 }
 
 @media (max-width: 1200px) {
