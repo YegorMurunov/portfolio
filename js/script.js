@@ -221,11 +221,11 @@ if (anLinks.length > 0) {
       var href = anLink.getAttribute('href').substring(1); // берем id из href без #
 
       var scrollTarget = document.getElementById(href);
-      var TopOffset_Link = scrollTarget.getBoundingClientRect().top + pageYOffset - header.offsetHeight; // точное положение секции с учётом скролла
+      var TopOffsetLink = scrollTarget.getBoundingClientRect().top + pageYOffset - header.offsetHeight; // точное положение секции с учётом скролла
       // скроллим к блоку
 
       window.scrollTo({
-        top: TopOffset_Link,
+        top: TopOffsetLink,
         behavior: 'smooth'
       });
     });
