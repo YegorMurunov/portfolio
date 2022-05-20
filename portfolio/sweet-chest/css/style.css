@@ -1447,6 +1447,20 @@ body._no-parallax .parallax__item {
   z-index: 3;
 }
 
+.footer-form .checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.footer-form .checkbox-label input {
+  margin-right: 5px;
+}
+
 .footer-form__input {
   padding: 25px;
   padding-left: 60px;
