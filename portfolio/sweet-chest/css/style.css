@@ -1451,6 +1451,7 @@ body._no-parallax .parallax__item {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
