@@ -287,6 +287,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
       }
 
       currentPopup.classList.add('_open');
+
+      if (header.classList.contains('_open')) {
+        headerToggle();
+      }
+
       currentPopup.addEventListener('click', function (e) {
         if (!e.target.closest('.popup__content')) {
           popupClose(e.target.closest('.popup'));
@@ -489,30 +494,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if (activeAccordion) {
       openAccordion(activeAccordion);
     }
-  }; // section portfolio
-  // Работы с информацией к каждой работе
-
-
-  var projectsCards = document.querySelectorAll('.portfolio-card');
-
-  if (projectsCards.length > 0) {
-    projectsCards.forEach(function (projectCard) {
-      var projectInfo = projectCard.querySelector('.card-info');
-
-      if (projectInfo) {
-        projectCard.addEventListener('mouseover', function (e) {
-          var height = projectInfo.clientHeight;
-          projectInfo.style.top = "-".concat(height - 10, "px");
-        });
-        projectCard.addEventListener('mouseout', function (e) {
-          projectInfo.style.top = 0;
-        });
-      }
-    });
-  }
-
-  ; // footer
+  }; // footer
   // copyright
+
 
   var copyright = document.getElementById('copyright');
 

@@ -154,6 +154,15 @@ main.page {
   pointer-events: all;
 }
 
+.popup.small-popup .popup__content {
+  transform: translate(0px, 0px);
+}
+
+.popup.small-popup._open .popup__content {
+  -webkit-animation: popupAnim 2s ease forwards;
+  animation: popupAnim 2s ease forwards;
+}
+
 .popup .popup__body {
   position: relative;
   min-height: 100%;
@@ -180,6 +189,7 @@ main.page {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -204,6 +214,7 @@ main.page {
   transform: translate(0, -50%) rotate(45deg);
   background-color: green;
   transition: all 0.3s ease;
+  border-radius: 2px;
 }
 
 .popup .popup__close::after {
@@ -216,6 +227,7 @@ main.page {
   transform: translate(0, -50%) rotate(-45deg);
   background-color: green;
   transition: all 0.3s ease;
+  border-radius: 2px;
 }
 
 .popup .popup__close:hover::before {
@@ -317,6 +329,62 @@ main.page {
   background-color: transparent;
   letter-spacing: 1px;
   transition: color 0.3s ease-in-out;
+}
+
+@-webkit-keyframes popupAnim {
+  0% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  100% {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes popupAnim {
+  0% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  100% {
+    transform: perspective(400px);
+  }
 }
 
 .header {
@@ -963,7 +1031,6 @@ main.page {
   display: block;
   position: relative;
   z-index: 2;
-  overflow: hidden;
 }
 
 .footer__nav {
@@ -1026,6 +1093,7 @@ main.page {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
