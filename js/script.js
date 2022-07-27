@@ -1,5 +1,7 @@
-"use strict";
+"use strict"; // language
 
+var language = window.navigator ? window.navigator.language || window.navigator.systemLanguage || window.navigator.userLanguage : 'ru';
+language = language.substr(0, 2).toLowerCase();
 document.addEventListener('DOMContentLoaded', function (e) {
   var body = document.body;
   var header = document.querySelector('header.header');
@@ -414,7 +416,44 @@ document.addEventListener('DOMContentLoaded', function (e) {
     });
   }
 
-  ; // burger
+  ; // custom select
+
+  var selects = document.querySelectorAll('.select');
+  selects.forEach(function (select) {
+    var input = select.querySelector('input');
+    var selectHeader = select.querySelector('.select-header');
+    var headerText = select.querySelector('.headerText');
+    var selectOptions = select.querySelector('.select-options');
+
+    selectHeader.onclick = function () {
+      return toggleSelect(select);
+    };
+
+    selectOptions.onclick = function (e) {
+      if (e.target.closest('li').hasAttribute('data-value')) {
+        var value = e.target.closest('li').getAttribute('data-value');
+        input.value = value;
+        headerText.textContent = value;
+        closeSelect(select);
+      }
+    };
+
+    document.body.onclick = function (e) {
+      if (!e.target.closest('.select')) {
+        closeSelect(select);
+      }
+    };
+  });
+
+  function toggleSelect(select) {
+    select.classList.toggle('_active');
+  }
+
+  function closeSelect(select) {
+    select.classList.remove('_active');
+  } // document.body.addEventListener('click', );
+  // burger
+
 
   var burgerBtn = document.querySelector('.header__menu-btn');
   burgerBtn.addEventListener('click', headerToggle);
@@ -488,15 +527,34 @@ document.addEventListener('DOMContentLoaded', function (e) {
     accordionBody.style.maxHeight = null;
   };
 
-  var activeAccordion = document.querySelector('.accordion-item._active');
+  function getActiveAccordion() {
+    var activeAccordion = document.querySelector('.accordion-item._active');
 
-  window.onload = function (e) {
+    if (activeAccordion) {
+      return activeAccordion;
+    }
+
+    return false;
+  }
+
+  window.onload = function () {
+    var activeAccordion = getActiveAccordion();
+
     if (activeAccordion) {
       openAccordion(activeAccordion);
     }
-  }; // footer
-  // copyright
+  };
 
+  window.addEventListener('resize', function () {
+    var activeAccordion = getActiveAccordion();
+
+    if (activeAccordion) {
+      var accordionBody = activeAccordion.querySelector(".accordion-item__text");
+      accordionBody.style.maxHeight = accordionBody.scrollHeight + 10 + "px";
+    }
+  });
+  ; // footer
+  // copyright
 
   var copyright = document.getElementById('copyright');
 
