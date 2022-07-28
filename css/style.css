@@ -874,6 +874,7 @@ main.page {
   transition: all 0.3s ease-in-out;
 }
 
+.accordion-item__text .paragraph:not(:last-child),
 .accordion-item__text p:not(:last-child) {
   margin-bottom: 10px;
 }
