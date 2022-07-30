@@ -392,17 +392,18 @@ main.page {
   top: 0;
   left: 0;
   right: 0;
-  padding: 15px;
+  padding: 15px 0;
   background-color: transparent;
   z-index: 4;
-  transition-duration: 0.5s;
+  transition: background 0.5s ease-in-out;
   transition-property: background backdrop-filter;
-  transition-timing-function: ease-in-out;
 }
 
 .header._fixed {
   position: fixed;
   background: rgba(0, 0, 0, 0.9);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   -webkit-animation: headerFixed 0.5s ease-in-out;
   animation: headerFixed 0.5s ease-in-out;
 }
@@ -1249,22 +1250,6 @@ main.page {
 
 .soc-icon.whatsapp:hover path {
   fill: #43D854;
-}
-
-.soc-icon.viber circle {
-  fill: #665CAC;
-}
-
-.soc-icon.viber path {
-  fill: #fff;
-}
-
-.soc-icon.viber:hover circle {
-  fill: #fff;
-}
-
-.soc-icon.viber:hover path {
-  fill: #665CAC;
 }
 
 .soc-icon.viber circle {
