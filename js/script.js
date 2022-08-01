@@ -480,22 +480,26 @@ document.addEventListener('DOMContentLoaded', function (e) {
   }
 
   checkHeader();
-  window.addEventListener('scroll', function () {
-    // фиксирование шапки
-    checkHeader(); // активный пункт меню
 
-    var TopOffset = window.scrollY;
-    document.querySelectorAll('.section').forEach(function (e, i) {
-      if (e.offsetTop - document.querySelector('.header-nav').clientHeight <= TopOffset + header.offsetHeight) {
-        document.querySelectorAll('.header-nav__link.anchor-link').forEach(function (e) {
-          if (e.classList.contains('_active')) {
-            e.classList.remove('_active');
-          }
-        });
-        document.querySelectorAll('.header-nav__link.anchor-link')[i].classList.add('_active');
-      }
+  if (document.querySelectorAll('.anchor-link').length > 0) {
+    window.addEventListener('scroll', function () {
+      // фиксирование шапки
+      checkHeader(); // активный пункт меню
+
+      var TopOffset = window.scrollY;
+      document.querySelectorAll('.section').forEach(function (e, i) {
+        if (e.offsetTop - document.querySelector('.header-nav').clientHeight <= TopOffset + header.offsetHeight) {
+          document.querySelectorAll('.header-nav__link.anchor-link').forEach(function (e) {
+            if (e.classList.contains('_active')) {
+              e.classList.remove('_active');
+            }
+          });
+          document.querySelectorAll('.header-nav__link.anchor-link')[i].classList.add('_active');
+        }
+      });
     });
-  }); // section resume
+  } // section resume
+
 
   var accordions = document.querySelectorAll(".accordion-item");
   accordions.forEach(function (accordion) {
@@ -561,5 +565,59 @@ document.addEventListener('DOMContentLoaded', function (e) {
   if (copyright) {
     var year = new Date().getFullYear();
     copyright.innerHTML = "\xA9 2021-".concat(year, " | Yegor Murunov");
-  }
+  } // lazy load popup img ==================================
+
+
+  var lazyImages = document.querySelectorAll('.lazy-load');
+  var loadedImg = []; // options
+
+  var options = {
+    root: null,
+    // Элемент который используется в качестве области просмотра для проверки видимости элемента
+    rootMargin: '-50% 0% 0% 0%',
+    // Отступы вокруг root
+    treshold: 0.1 // Число, указывающие, при каком проценте видимости целевого элемента должен сработать callback
+
+  }; // function handleImg
+
+  function handleImg(images, observer) {
+    images.forEach(function (img) {
+      if (img.intersectionRatio > 0) {
+        console.log(img.target);
+        loadImg(img.target);
+      }
+    });
+  } // function loadImg
+
+
+  function loadImg(img) {
+    var src = img.dataset.src;
+
+    if (loadedImg.indexOf(src) == -1) {
+      img.src = src;
+      loadedImg.push(src); // for webp
+
+      if (img.previousElementSibling && img.previousElementSibling.tagName == 'SOURCE') {
+        var webp = img.previousElementSibling;
+        src = webp.dataset.srcset;
+        webp.setAttribute('srcset', src);
+      }
+
+      img.onload = function () {
+        var popup = img.closest('.popup');
+        popup.classList.remove('_loading');
+        return img;
+      };
+    }
+  } // observer
+
+
+  var observer = new IntersectionObserver(handleImg, options); // запускаем observer
+
+  if (lazyImages.length > 0) {
+    lazyImages.forEach(function (img) {
+      observer.observe(img);
+    });
+  } // ================
+
 });

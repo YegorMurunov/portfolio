@@ -163,6 +163,29 @@ main.page {
   animation: popupAnim 2s ease forwards;
 }
 
+.popup._loading::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.popup._loading::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url("../img/interface/loading.gif") center/contain no-repeat;
+  z-index: 2;
+}
+
 .popup .popup__body {
   position: relative;
   min-height: 100%;
@@ -178,7 +201,7 @@ main.page {
   color: #000;
   max-width: 800px;
   padding: 20px;
-  transform: translate(0px, -100%);
+  transform: translate(0, -100%);
   pointer-events: none;
   border-radius: 5px;
   transition: all 0.8s ease;
@@ -1348,7 +1371,24 @@ main.page {
   fill: #171515;
 }
 
+.center {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  background-color: transparent;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 @supports (-webkit-appearance:none) {
+  .popup._loading::after {
+    background: url("../img/interface/loading.gif") center/contain no-repeat;
+  }
+
   .section-hero {
     background: #654321 url("../img/interface/intro.webp") center/cover no-repeat;
   }
