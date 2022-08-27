@@ -583,7 +583,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
   function handleImg(images, observer) {
     images.forEach(function (img) {
       if (img.intersectionRatio > 0) {
-        console.log(img.target);
         loadImg(img.target);
       }
     });
@@ -605,6 +604,24 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
       img.onload = function () {
         var popup = img.closest('.popup');
+
+        if (popup.querySelectorAll('.lazy-load').length > 1) {
+          popup.querySelectorAll('.lazy-load').forEach(function (img) {
+            if (img.src == img.dataset.src) {
+              return;
+            }
+
+            img.src = img.dataset.src;
+            loadedImg.push(src);
+
+            if (img.previousElementSibling && img.previousElementSibling.tagName == 'SOURCE') {
+              var _webp = img.previousElementSibling;
+
+              _webp.setAttribute('srcset', _webp.dataset.srcset);
+            }
+          });
+        }
+
         popup.classList.remove('_loading');
         return img;
       };

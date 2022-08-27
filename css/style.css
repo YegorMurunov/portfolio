@@ -271,7 +271,6 @@ main.page {
   position: relative;
   text-align: center;
   display: inline-block;
-  margin-bottom: 15px;
 }
 
 .popup .popup__text {
@@ -279,6 +278,7 @@ main.page {
   text-align: left;
   font-size: 16px;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .popup .popup__text a {
@@ -301,14 +301,22 @@ main.page {
   vertical-align: top;
 }
 
+.popup__btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
 .popup__btn {
-  width: 200px;
+  min-width: 200px;
   height: 48px;
   overflow: hidden;
   position: relative;
   border: 1px solid #654321;
   border-radius: 5px;
-  margin-top: 15px;
   transition: border-color 0.3s ease-in-out;
 }
 
@@ -340,6 +348,7 @@ main.page {
   z-index: 2;
   text-transform: uppercase;
   font-size: 16px;
+  padding: 10px;
   font-weight: 700;
   font-family: "Cousine-Bold";
   display: inline-flex;
