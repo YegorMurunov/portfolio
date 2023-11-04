@@ -159,7 +159,6 @@ main.page {
 }
 
 .popup.small-popup._open .popup__content {
-  -webkit-animation: popupAnim 2s ease forwards;
   animation: popupAnim 2s ease forwards;
 }
 
@@ -363,45 +362,15 @@ main.page {
   transition: color 0.3s ease-in-out;
 }
 
-@-webkit-keyframes popupAnim {
-  0% {
-    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-    opacity: 0;
-  }
-
-  40% {
-    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-
-  60% {
-    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
-    opacity: 1;
-  }
-
-  80% {
-    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
-  }
-
-  100% {
-    transform: perspective(400px);
-  }
-}
-
 @keyframes popupAnim {
   0% {
     transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
-    -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
     opacity: 0;
   }
 
   40% {
     transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-    -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
 
@@ -436,18 +405,7 @@ main.page {
   background: rgba(0, 0, 0, 0.9);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-  -webkit-animation: headerFixed 0.5s ease-in-out;
   animation: headerFixed 0.5s ease-in-out;
-}
-
-@-webkit-keyframes headerFixed {
-  0% {
-    top: -100%;
-  }
-
-  100% {
-    top: 0;
-  }
 }
 
 @keyframes headerFixed {
@@ -473,8 +431,8 @@ main.page {
 }
 
 .header__menu-body {
-  -webkit-backdrop-filter: blur(0px);
-  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
 .header._open .header__menu-body {
@@ -549,7 +507,6 @@ main.page {
   height: 30px;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -765,20 +722,6 @@ main.page {
   stroke: #fff;
 }
 
-@-webkit-keyframes scroll {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(60px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
 @keyframes scroll {
   0% {
     transform: translateY(0);
@@ -794,7 +737,6 @@ main.page {
 }
 
 .icon-scroll #wheel {
-  -webkit-animation: scroll ease 2s infinite;
   animation: scroll ease 2s infinite;
 }
 
